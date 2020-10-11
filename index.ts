@@ -101,3 +101,66 @@ const cloth: {
     color: 'white',
     size: clothSize
 }
+
+/**
+ * 型エイリアス
+ * 型を変数のように扱える
+ */
+type ClothSize = 'small' | 'medium' | 'large';
+let clothSize2: ClothSize = 'large';
+
+/**
+ * 関数に型をつける
+ * 引数、戻り値に型をつける
+ * 引数は型注釈をつけないと、anyになってしまうので必ずつけたほうがよい
+ */
+function add(num1:number, num2:number):number {
+    return num1 + num2;
+}
+
+// 戻り値なし(returnなし)はvoid
+function sayHello(): void {
+    console.log('Hello');
+}
+
+/**
+ * 関数型を使う
+ * 型注釈か、無名関数のどちらかに型注釈があればよい
+ */
+const anotheradd: (n1: number, n2: number) => number = add;
+
+// アロー関数
+const doubleNumber: (num: number) => number = num => num * 2;
+
+// コールバック関数
+function doubleAndHandle(num: number, cb: (num: number) => number): void {
+    const doubleNum = cb(num * 2);
+    console.log(doubleNum);
+}
+
+doubleAndHandle(10, doubleNum => {
+    return doubleNum;
+})
+
+/**
+ * unknown型
+ * anyと同じくなんでも代入できるが、使うときにtype ofで型をチェックする必要がある
+ */
+let unknownInput: unknown;
+let anyInput: any;
+let text: string;
+unknownInput = 'hello';
+unknownInput = 21;
+unknownInput = true;
+if (typeof unknownInput === 'string') {
+    text = unknownInput;
+}
+
+/**
+ * never型
+ * 戻り値を絶対に返さないことを表す
+ */
+function error(message: string): never {
+    throw new Error(message);
+}
+console.log(error('This is an Error!'));

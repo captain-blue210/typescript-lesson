@@ -55,12 +55,13 @@ coffee.size = CoffeeSize.SHORT;
 // どんな型にもなる。基本使わないほうがよい。
 var anything = true;
 anything = 'hello';
-/* Union
- 複数の型のうちどれか
- Tuppleは型の組み合わせ
- Unionはor?
- ２つ以上の型もできる
-*/
+/**
+ * Union
+ * 複数の型のうちどれか
+ * Tuppleは型の組み合わせ
+ * Unionはor?
+ * ２つ以上の型もできる
+ */
 var unionType = 10;
 // 数値を入れている場合はnumberのメソッドが使える
 unionType.toString();
@@ -71,3 +72,62 @@ unionType = unionType.toUpperCase();
 console.log(unionType);
 var unionTypeArray = [30, 'array'];
 console.log(unionTypeArray[0]);
+/**
+ * Literal Type
+ * TypeScriptはletではstring, constではLiteralを採用する
+ * 型としてリテラルを使える
+ */
+var clothSize = 'large';
+var cloth = {
+    color: 'white',
+    size: clothSize
+};
+var clothSize2 = 'large';
+/**
+ * 関数に型をつける
+ * 引数、戻り値に型をつける
+ * 引数は型注釈をつけないと、anyになってしまうので必ずつけたほうがよい
+ */
+function add(num1, num2) {
+    return num1 + num2;
+}
+// 戻り値なし(returnなし)はvoid
+function sayHello() {
+    console.log('Hello');
+}
+/**
+ * 関数型を使う
+ * 型注釈か、無名関数のどちらかに型注釈があればよい
+ */
+var anotheradd = add;
+// アロー関数
+var doubleNumber = function (num) { return num * 2; };
+// コールバック関数
+function doubleAndHandle(num, cb) {
+    var doubleNum = cb(num * 2);
+    console.log(doubleNum);
+}
+doubleAndHandle(10, function (doubleNum) {
+    return doubleNum;
+});
+/**
+ * unknown型
+ * anyと同じくなんでも代入できるが、使うときにtype ofで型をチェックする必要がある
+ */
+var unknownInput;
+var anyInput;
+var text;
+unknownInput = 'hello';
+unknownInput = 21;
+unknownInput = true;
+if (typeof unknownInput === 'string') {
+    text = unknownInput;
+}
+/**
+ * never型
+ * 戻り値を絶対に返さないことを表す
+ */
+function error(message) {
+    throw new Error(message);
+}
+console.log(error('This is an Error!'));
