@@ -69,8 +69,5 @@
   "exclude": [
     "**/compile-section.ts",
     "*.spec.ts"
-  ],
-  "include": [
-    "**/tmp.ts"
   ]
 }
