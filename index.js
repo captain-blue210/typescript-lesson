@@ -1,3 +1,4 @@
+"use strict";
 // 型
 // 型注釈つき
 var hello = 'hello';
@@ -117,7 +118,7 @@ doubleAndHandle(10, function (doubleNum) {
 var unknownInput;
 var anyInput;
 var text;
-unknownInput = 'hello';
+unknownInput = 'hello!';
 unknownInput = 21;
 unknownInput = true;
 if (typeof unknownInput === 'string') {
