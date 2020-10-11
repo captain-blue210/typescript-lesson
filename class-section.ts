@@ -1,10 +1,14 @@
 class Person {
     // default is public
-    //name: string
-    //private age: number
+    // name: string
+    // private age: number
 
+    // readonly
+    readonly id: number = 32;
     // omit initilize process
-    constructor(name: string, private age: number) {
+    constructor(public readonly name: string, private age: number) {
+        // readonly can overwrite in constructor.
+        this.id = 45;
     }
 
     greeting(this: Person) {
@@ -13,6 +17,8 @@ class Person {
 
     incrementAge() {
         this.age += 1;
+        // not overwrite readonly
+        //this.id = 0;
     }
 }
 
@@ -20,3 +26,4 @@ const steve = new Person('Steve', 32);
 steve.greeting();
 steve.incrementAge();
 steve.greeting();
+console.log(steve.id);
