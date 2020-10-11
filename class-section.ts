@@ -1,11 +1,10 @@
 class Person {
     // default is public
-    name: string
-    private age: number
+    //name: string
+    //private age: number
 
-    constructor(initName: string, initAge: number) {
-        this.name = initName;
-        this.age = initAge;
+    // omit initilize process
+    constructor(name: string, private age: number) {
     }
 
     greeting(this: Person) {
