@@ -1,3 +1,4 @@
+// interfaceでは以下のように、型を随時追拡張できてしまい、バグに繋がりやすい
 interface User {
     name: string;
 }
