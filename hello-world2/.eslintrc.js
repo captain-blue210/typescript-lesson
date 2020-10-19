@@ -45,6 +45,14 @@ module.exports = {
         {
           exceptAfterSingleLine: true,
         },
+        'prefer-arrow/prefer-arrow-functions': [
+            'error',
+            {
+                disallowPrototype: true,
+                singleReturnOnly: false,
+                classPropertiesAllowed: false,
+            }
+        ]
       ],
       // should be rewritten as `['error', { allowAsStatement: true }]` in ESLint 7 or later
       // SEE: https://github.com/typescript-eslint/typescript-eslint/issues/1184
